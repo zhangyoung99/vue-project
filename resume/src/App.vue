@@ -30,6 +30,7 @@ export default {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    background: #eaebec;
   }
   .page>main {
     flex-grow: 1;
@@ -37,9 +38,12 @@ export default {
   .page>main {
     min-width: 1024px;
     max-width: 1440px;
-    margin: 0;
+    margin-top: 16px;
+    margin-bottom: 20px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 0 16px;
+    width: 100%;
   }
   #resumeEditor{
     width: 35%;

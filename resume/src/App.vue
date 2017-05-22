@@ -18,8 +18,10 @@ import Topbar from './components/Topbar'
 import ResumeEditor from './components/ResumeEditor'
 import ResumePreview from './components/ResumePreview'
 import icons from './assets/icons'
+import store from './store/index'
 export default {
   name: 'app',
+  store,
   components: {Topbar, ResumeEditor, ResumePreview},
   created() {
     document.body.insertAdjacentHTML('afterbegin', icons)

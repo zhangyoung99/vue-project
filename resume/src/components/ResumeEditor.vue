@@ -4,9 +4,7 @@
       <ul>
         <li v-for="(item,index) in resume.config"
            :class="{active: item.field === selected}"
-           @click="selected = item.field"
-         >
-         {{index}}
+           @click="selected = item.field">
            <svg class="icon">
              <use :xlink:href="`#icon-${item.icon}`"></use>
            </svg>

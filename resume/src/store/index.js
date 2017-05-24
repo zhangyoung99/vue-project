@@ -9,24 +9,23 @@ export default new Vuex.Store({
     resume: {
        config: [
          { field: 'profile', icon: 'id' },
-        { field: 'work history', icon: 'work' },
+         { field: 'workExperience', icon: 'work' },
          { field: 'education', icon: 'book' },
          { field: 'projects', icon: 'heart' },
          { field: 'awards', icon: 'cup' },
          { field: 'contacts', icon: 'phone' },
        ],
        profile: {
-         name: '',
-         city: '',
-         title: ''
+         name: '张某某',
+         city: '深圳',
+         title: '前端',
+         birthday: '1989-06-24'
        },
-       'work history': [
-         { company: 'SYT', content: '我的第二份工作是' },
-         { company: 'SAE', content: '我的第一份工作是' },
+       workExperience: [
+         { company: 'SYT', content: '潮流前线科技有限公司'}
        ],
        education: [
-         { school: 'AL', content: '文字' },
-         { school: 'TX', content: '文字' },
+         { school: '广东海洋大学', content: '机械设计制造及自动化' }
        ],
        projects: [
          { name: 'project A', content: '文字' },
@@ -43,7 +42,6 @@ export default new Vuex.Store({
      }    
   },
   mutations: {
-
     switchTab (state, payload){
        state.selected = payload
     }

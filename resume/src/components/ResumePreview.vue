@@ -45,7 +45,7 @@
        <h2>证书</h2>
        <ul>
          <li v-for="item in resume.awards">
-           <h3>{{item.contact}}</h3>
+           <h3>{{item.name}}</h3>
            <p v-show="item.content">{{item.content}}</p>
          </li>
        </ul>

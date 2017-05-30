@@ -19,7 +19,7 @@ export default new Vuex.Store({
        profile: {
          name: '张洋源',
          city: '深圳',
-         title: '前端',
+         title: '求职意向：前端开发',
          birthday: '1989-06-24'
        },
        workExperience: [
@@ -47,11 +47,16 @@ export default new Vuex.Store({
      }    
   },
   mutations: {
-    switchTab (state, payload){
-       state.selected = payload
+    initState(state,playload) {
+      Object.assign(state,playload)
     },
-    updateResume(state,{path,value}) {
+    switchTab(state, payload) {
+       state.selected = payload
+       localStorage.setItem('state',JSON.stringify('state'))
+    },
+    updateResume(state, {path, value}) {
       objectPath.set(state.resume, path, value)
+      localStorage.setItem('state',JSON.stringify('state'))
     }
   }
 })

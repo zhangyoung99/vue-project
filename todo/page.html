@@ -18,7 +18,7 @@
             <input type="checkbox" v-model="todo.done">{{todo.title}}
             <span v-if="todo.done">已完成</span>
             <span v-else>未完成</span>
-            <!--<span>{{todo.createdAt}}</span>-->
+            <span>{{todo.createdAt.toLocaleString()}}</span>
             <button class="btn-del" @click="removeToDo(todo)">删除</button>
           </li>
       </ul>

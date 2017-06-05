@@ -3,14 +3,15 @@
         <form @submit.prevent="signUp"> 
             <div class="formRow">
                 <label for="">用户名</label>
-                <input type="text" v-model="formData.username" >       
+                <input type="text" v-model="formData.username" required>       
             </div> 
             <div class="formRow">
                 <label for="">密码</label>
-                <input type="password" v-model="formData.password">    
+                <input type="password" v-model="formData.password" required>    
             </div> 
             <div class="formAction">
                 <input type="submit" value="提交">
+                <span class="errorMessage">{{errorMessage}}</span>
             </div>
         </form> 
     </div>
@@ -18,6 +19,7 @@
 
 <script>
 import AV from '../lib/leancloud'
+import getErrorMessage from '../lib/getErrorMessage'
 
 export default {
     name: 'SignUpForm',
@@ -26,7 +28,8 @@ export default {
             formData: {
                 username: '',
                 password: ''
-            }
+            },
+            errorMessage: ''
         }
     },
     created(){
@@ -43,7 +46,7 @@ export default {
                 id: loginedUser.id
             })
         }, function (error) { 
-            alert('注册失败');   
+            this.errorMessage = getErrorMessage(error);   
         });      
       },
     }

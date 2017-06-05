@@ -3,7 +3,12 @@
     <div class="wrapper">
        <span class="logo">Resumer</span>
        <div class="actions">
-          <button class="btn btn-save">保存</button>
+          <a href="#" class="btn primary" @click.prevent="signUpDialogVisible = true">注册</a>
+          <myDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">
+             <SignUpForm @success = "login($event)" />
+          </myDialog>
+          <a href="#" class="btn login">登录</a>
+          <button class="btn primary">保存</button>
           <button class="btn btn-preview">预览</button>
        </div>
     </div>
@@ -11,8 +16,27 @@
 </template>
 
 <script>
+import myDialog from './myDialog'
+import SignUpForm from './SignUpForm'
 export default {
-  name: 'Topbar'
+  name: 'Topbar',
+  data() {
+    return {
+      signUpDialogVisible: false
+    }
+  },
+  computed: {
+    user() {
+      return this.$store.state.user
+    }
+  },
+  components: { myDialog, SignUpForm},
+  methods: {
+     login(user) {
+       this.signUpDialogVisible = false
+       this.$store.commit('setUser', user)
+     }
+  }
 }
 </script>
 
@@ -32,17 +56,24 @@ export default {
      align-items: center;
      padding: 0 16px;
    }
-   button {
+   a {
+     display: inline-block;
+   }
+   .btn {
      width: 72px;
      height: 32px;
+     line-height: 32px;
      cursor: pointer;
      font-size: 18px;
      border: none;
      color: #222;
+     text-decoration: none;
+     text-align: center;
+     
      &:hover {
        box-shadow: 1px 1px 1px rgba(0,0,0,0.5);
      }
-     &.btn-save {
+     &.primary {
       background:#02af5f;
       color: #fff;
      }

@@ -41,10 +41,10 @@
          </li>
        </ul>
      </section> 
-     <section data-name="award" v-show="resume.awards">
-       <h2>证书</h2>
+     <section data-name="award" v-show="resume.skill">
+       <h2>个人技能</h2>
        <ul>
-         <li v-for="item in resume.awards">
+         <li v-for="item in resume.skill">
            <h3>{{item.name}}</h3>
            <p v-show="item.content">{{item.content}}</p>
          </li>

@@ -1,40 +1,94 @@
 <template>
   <div id="NoteList">
-     <div class="title">
-       <h1>NOTES</h1>
-     </div>
-     <div class="main">
-       <ul>
-           <li>item1</li>
-           <li>item2</li>
-       </ul>
-     </div>
+
+    <div class="list-header">
+       <h2>NOTES</h2>
+
+       <div class="btn-group" role="group">
+           <button type="button" class="btn btn-default"
+             @click = "show = 'all'"
+             :class="{active: show ==='all'}">
+             All Notes
+           </button>
+       </div>
+       <div class="btn-group" role="group">
+          <button type="button" class="btn btn-default"
+            @click="show = 'favorites'"
+            :class="{active: show ==='favorites'}">
+            Favorites
+          </button>
+       </div>
+    </div>
+
+    <!-- render notes in a list -->
+    <div class="container">
+      <div class="list-group">
+        <li v-for="note in filteredNotes"
+          class="list-group-item"
+          :class="{active: activeNote === note}"
+          @click="updateActiveNote(note)">
+          <p class="list-group-item-heading">
+            {{note.text}}
+            <i @click="deleteNote" class="btn-del">x</i>
+          </p>
+        </li>
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script>
 export default {
   name: 'NoteList',
+  data () {
+      return {
+          show: 'all'
+      }
+  },
+  computed: {
+    notes () {
+        return this.$store.getters.notes
+    },
+    activeNote () {
+          return this.$store.getters.activeNote
+    },
+    filteredNotes () {
+      if (this.show === 'all'){
+        return this.notes
+      } else if (this.show === 'favorites') {
+        return this.notes.filter(note => note.favorite)
+      }
+    }    
+  },
+  methods: {
+    deleteNote() {
+          this.$store.dispatch('deleteNote')
+    },
+    updateActiveNote() {
+          this.$store.dispatch('updateActiveNote')
+      },
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="less">
+<style lang="less">
  #NoteList {
    width: 30%;
    height:100vh;
    background: #e5e5e5;
-   .title {
+   .list-header {
        padding: 10px;
        text-align: center;
    }
-   .main {
-       li {
-          &:hover {
-              background: #07d;
-              color: #fff;
-          }
-          list-style: none; 
+   .container {
+       width: 100%;
+       padding: 0;
+       height: 50px;
+       .btn-del {
+           float: right;
+           right: 10px;
        }
    }
  }

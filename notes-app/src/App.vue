@@ -16,21 +16,23 @@ import Toolbar from  './components/Toolbar'
 import NoteList from './components/NoteList'
 import Editor from   './components/Editor'
 
+
+import store from './store/store'
+
 export default {
   name: 'app',
+  store,  // inject store to all children
   components: {Toolbar, NoteList, Editor}
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
   #app {
     height: 100vh;
-    // border: 1px solid #e5e5e5;
     .wrapper {
       min-width: 1024px;
       max-width: 1440px;
       display: flex;
-      // margin: 0 auto;
       justify-content: center;
     }
   }

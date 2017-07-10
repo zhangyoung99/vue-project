@@ -13,8 +13,8 @@
        </div>
        <div class="btn-group" role="group">
           <button type="button" class="btn btn-default"
-            @click="show = 'favorites'"
-            :class="{active: show ==='favorites'}">
+            @click = "show = 'favorites'"
+            :class = "{active: show ==='favorites'}">
             Favorites
           </button>
        </div>
@@ -59,15 +59,16 @@ export default {
       } else if (this.show === 'favorites') {
         return this.notes.filter(note => note.favorite)
       }
-    }    
+    }          
   },
   methods: {
     deleteNote() {
           this.$store.dispatch('deleteNote')
     },
-    updateActiveNote() {
+    updateActiveNote(note) {
           this.$store.dispatch('updateActiveNote')
-      },
+    }
+    
   }
 }
 </script>
@@ -77,7 +78,7 @@ export default {
  #NoteList {
    width: 30%;
    height:100vh;
-   background: #e5e5e5;
+   background: #f8f8f8;
    .list-header {
        padding: 10px;
        text-align: center;
@@ -89,6 +90,7 @@ export default {
        .btn-del {
            float: right;
            right: 10px;
+           cursor: pointer;
        }
    }
  }

@@ -1,10 +1,8 @@
 <template>
   <div id="app">
-    <div class="wrapper">
       <Toolbar/>
       <NoteList/>
       <Editor/>  
-    </div>
   </div>
 </template>
 
@@ -17,11 +15,9 @@ import NoteList from './components/NoteList'
 import Editor from   './components/Editor'
 
 
-import store from './store/store'
 
 export default {
-  name: 'app',
-  store,  // inject store to all children
+  name: 'app', 
   components: {Toolbar, NoteList, Editor}
 }
 </script>
@@ -29,11 +25,9 @@ export default {
 <style lang="less">
   #app {
     height: 100vh;
-    .wrapper {
-      min-width: 1024px;
-      max-width: 1440px;
-      display: flex;
-      justify-content: center;
-    }
+    min-width: 1024px;
+    max-width: 1440px;
+    display: flex;
+    justify-content: center;
   }
 </style>

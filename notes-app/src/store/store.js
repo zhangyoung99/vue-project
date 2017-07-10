@@ -22,8 +22,8 @@ export default new Vuex.Store({
             state.notes.push(newNote)
             state.activeNote = newNote
         },
-        EDIT_NOTE (state,note) {
-            state.activeNote.text = note
+        EDIT_NOTE (state,e) {
+            state.activeNote.text = e
         },
         DELETE_NOTE (state) {
             let index = state.notes.indexOf(state.notes)

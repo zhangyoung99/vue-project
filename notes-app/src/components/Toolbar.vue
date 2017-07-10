@@ -19,18 +19,7 @@ export default {
           return this.$store.getters.activeNote
       }
   },
-    // getters: {
-    //   activeNote: state => state.activeNote
-    // },
-//     actions: {
-//       addNote,
-//       deleteNote,
-//       toggleFavorite
-//     }
-//   }  
-//   data () {
-//       newTodo: ''
-//   },
+
     methods: {
       addNote() {
           this.$store.dispatch('addNote')
@@ -58,8 +47,9 @@ export default {
      text-align: center;
     i {
        margin-top: 50px;
+       color: #767676;
        &:hover {
-           opacity: .5;
+           opacity: .8;
        }
      }
     .starred {

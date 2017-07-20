@@ -21,20 +21,20 @@ export default new Vuex.Store({
          { field: 'contacts', icon: 'phone' },
        ],
        profile: {
-         name: '张洋源',
+         name: '张某某',
          city: '深圳',
          title: '求职意向：前端开发',
          birthday: ' 男 28岁'
        },
        workExperience: [
-         { company: '东莞潮流前线信息科技有限公司(2016.04-2017.05)', content: 
+         { company: '潮流前线服饰有限公司(2016.04-2017.05)', content: 
            '1. PC端官网维护工作,主要负责官网前端页面重构和常见页面效果实现。公司官网改版。在这期间，作为前端开发人员，参与了3个版块的页面改版，应用HTML、CSS3、LESS等技术完成静态页面的重构&页面性能优化工作，协助Java后端完成了线上环境发布更新，后期跟进正式环境的前端bug修复工作。\n \n2. APP信息管理系统后台前端页面维护工作。协助Java后端完成了报表系统平台销售数据弹框展示页面优化，参与产品新增需求的前端静态页面编写，完成既定产品需求。'
          }
        ],
        education: [
-         { school: '广东海洋大学', 
-           major: '机械设计制造及自动化-本科', 
-           time: '2008/09-2012/06'
+         { school: '古惑仔大学', 
+           major: '打架专业-本科', 
+           time: '2008-2012'
           }
        ],
        projects: [
@@ -47,8 +47,8 @@ export default new Vuex.Store({
          { name: '专业技能', content: '1. 掌握HTML&CSS3，能用HTML&CSS3实现常见页面布局，熟练使用PS切图，使用预编译工具LESS/SASS。\n 2.掌握JavaScript基本语法的使用，包括了解ES6常见语法使用。\n 3.掌握Bootstrap框架的组件插件使用，能实现响应式布局页面，能用jQuery库实现页面交互效果。\n 4.熟悉HTTP协议基础知识，使用Ajax方法实现数据请求。\n5. 对前端MVVM框架Vue.js有一定的实践经验，使用过vue-cli、vuex搭建项目，实现简单的小项目，如todo小应用、在线简历编辑器。\n 6. 会使用前端构建Webpack工具，了解其常用配置选项。' }
        ],
        contacts: [
-         { contact: 'phone', content: '13669850479' },
-         { contact: 'email', content: 'zhangyangyuan0624@126.com' },
+         { contact: 'phone', content: '136***0479' },
+         { contact: 'email', content: 'xxx@qq.com' },
        ],
      }    
   },

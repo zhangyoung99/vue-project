@@ -14,7 +14,7 @@
        <div class="btn-group" role="group">
           <button type="button" class="btn btn-default"
             @click = "show = 'favorites'"
-            :class = "{active: show ==='favorites'}">
+            :class="{active: show ==='favorites'}">
             Favorites
           </button>
        </div>
@@ -23,15 +23,15 @@
     <!-- render notes in a list -->
     <div class="container">
       <div class="list-group">
-        <li v-for="note in filteredNotes"
-          class="list-group-item"
+        <a v-for="note in filteredNotes"
+          class="list-group-item" href="#"
           :class="{active: activeNote === note}"
           @click="updateActiveNote(note)">
           <p class="list-group-item-heading">
-            {{note.text}}
-            <i @click="deleteNote" class="btn-del">x</i>
+            {{note.text.trim().substring(0, 50)}}
+            <!--<i @click="deleteNote" class="btn-del">x</i>-->
           </p>
-        </li>
+        </a>
       </div>
     </div>
 
@@ -53,28 +53,30 @@ export default {
     activeNote () {
           return this.$store.getters.activeNote
     },
-    filteredNotes () {
+    filteredNotes (note) {
       if (this.show === 'all'){
         return this.notes
       } else if (this.show === 'favorites') {
         return this.notes.filter(note => note.favorite)
       }
-    }          
+    }       
   },
   methods: {
-    deleteNote() {
-          this.$store.dispatch('deleteNote')
-    },
+    // deleteNote() {
+    //       this.$store.dispatch('deleteNote')
+    // },
     updateActiveNote(note) {
-          this.$store.dispatch('updateActiveNote')
+          // console.log(note)
+          this.$store.dispatch('updateActiveNote',note)
     }
+ 
     
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="less">
+<style lang="less" scoped>
  #NoteList {
    width: 30%;
    height:100vh;

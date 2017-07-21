@@ -8,7 +8,10 @@
 </div>
 </template>
 
+
+
 <script>
+
 export default {
   name: 'Editor',
   // data () {
@@ -16,19 +19,19 @@ export default {
   // },
   computed: {
       activeNoteText () {
-          return this.$store.getters.activeNoteText
+          return this.$store.getters.activeNote.text
       }
   },
   methods:{
-    editNote() {
-      this.$store.dispatch('editNote')
+    editNote(e) {
+      this.$store.dispatch('editNote',e.target.value)
     }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="less">
+<style lang="less" scoped>
  #note-editor {
    height: 100vh;
    width: 50%;

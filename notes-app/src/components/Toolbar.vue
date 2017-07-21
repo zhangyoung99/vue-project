@@ -7,14 +7,10 @@
 </template>
 
 <script>
-// import { addNote, deleteNote, toggleFavorite } from '../store/actions.js'
 
 export default {
   name: 'Toolbar',
   computed: {
-    //   notes() {
-    //       return this.$store.getters.notes
-    //   },
       activeNote () {
           return this.$store.getters.activeNote
       }
@@ -35,7 +31,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="less">
+<style lang="less" scoped>
  #Toolbar {
      display: flex;
      width: 80px;

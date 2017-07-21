@@ -11,7 +11,7 @@ export default new Vuex.Store({
     getters: {
       notes: state => state.notes,   
       activeNote: state => state.activeNote,
-      activeNoteText: state => state.activeNote.text
+    //   activeNoteText: state => state.activeNote.text
     },
     mutations: {
         ADD_NOTE (state) {
@@ -22,8 +22,8 @@ export default new Vuex.Store({
             state.notes.push(newNote)
             state.activeNote = newNote
         },
-        EDIT_NOTE (state,e) {
-            state.activeNote.text = e
+        EDIT_NOTE (state,text) {
+            state.activeNote.text = text
         },
         DELETE_NOTE (state) {
             let index = state.notes.indexOf(state.notes)
@@ -40,13 +40,13 @@ export default new Vuex.Store({
         addNote({ commit }){
            commit('ADD_NOTE')
         },
-        editNote({ commit }, e){
-            commit('EDIT_NOTE', e.target.value)
+        editNote({ commit},text){
+            commit('EDIT_NOTE', text)
         },
         deleteNote({ commit }){
             commit('DELETE_NOTE')
         },
-        updateActiveNote({ commit }, note){
+        updateActiveNote({ commit},note){
             commit('SET_ACTIVE_NOTE', note)
         },
         toggleFavorite ({ commit }){

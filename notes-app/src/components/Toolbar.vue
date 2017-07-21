@@ -16,7 +16,7 @@ export default {
       }
   },
 
-    methods: {
+  methods: {
       addNote() {
           this.$store.dispatch('addNote')
       },

@@ -15,6 +15,10 @@ export default new Vuex.Store({
     },
     mutations: {
         ADD_NOTE (state) {
+            /**
+             * text 默认文字
+             * favorite 收藏标示
+             */
             const newNote = {
                 text: 'new note',
                 favorite: false

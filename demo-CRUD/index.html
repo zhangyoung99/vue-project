@@ -27,7 +27,6 @@
             </div>
         </div>
         <div class="container">
-            <!--子组件-->
             <simple-grid :data-List="people" :columns="columns" :search-Key="searchQuery"></simple-grid>
         </div>
     </div>
@@ -105,14 +104,6 @@
                 
             }
          },
-         ready: function() {
-            for(var i = 0; i < this.columns.length; i++) {
-                if(this.columns[i].isKey) {
-                    this.keyColumn = this.columns[i]['name']
-                    break;
-                }
-            }
-        },
          methods:{
             openNewDialog: function(title) {
                 this.title = title
@@ -124,62 +115,26 @@
             },
             openEditorItemDialog: function(key) {
                 // 根据主键查找当前修改的数据
-                var currentItem = this.findItemByKey(key)
+                // var currentItem = this.findItemByKey(key)
                 // 对话框的标题
                 this.title = 'Edit Item - ' + key
                 // mode = 2表示修改模式
                 this.mode = 2
                 // 将选中的数据拷贝到this.item
-                this.item = this.initItemForUpdate(currentItem)
+                // this.item = this.initItemForUpdate(currentItem)
                 //使用$refs，是父组件引用子组件
                 this.$refs.dialogItem.show = true
             },
-            // 弹出修改数据的对话框时，使用对象的深拷贝
-            initItemForUpdate(p, c) {
-                c = c || {};
-                for(var i in p) {
-                    // 属性i是否为p对象的自有属性
-                    if(p.hasOwnProperty(i)) {
-                        // 属性i是否为复杂类型
-                        if(typeof p[i] === 'object') {
-                            // 如果p[i]是数组，则创建一个新数组
-                            // 如果p[i]是普通对象，则创建一个新对象
-                            c[i] = Array.isArray(p[i]) ? [] : {};
-                            // 递归拷贝复杂类型的属性
-                            this.initItemForUpdate(p[i], c[i]);
-                        } else {
-                            // 属性是基础类型时，直接拷贝
-                            c[i] = p[i];
-                        }
-                    }
-                }
-                return c;
-            },
-            findItemByKey: function(key){
-                var keyColumn = this.keyColumn
-                for(var i = 0; i < this.dataList.length; i++){
-                    if(this.dataList[i][keyColumn] === key){
-                        return this.dataList[i]
-                    }
-                }
-            },
-            itemExists: function(keyColumn) {
-                for (var i = 0; i < this.dataList.length; i++) {
-                    if (this.item[keyColumn] === this.dataList[i][keyColumn])
-                        return true;
-                }
-                return false;
-            },
             createItem: function(){
-                var  keyColumn = this.keyColumn
-                if(!this.itemExists(keyColumn)){
+                // var  keyColumn = this.keyColumn
+                // if(!this.itemExists(keyColumn)){
                     // 将item追加到dataList
                     this.dataList.push(this.item)
                     //重置item
-                    // this.item = {}
-                }else {
-                    alert(keyColumn + ' "' + this.item[keyColumn] + '" is already exists')
-                }
+                    this.item = {}
+                // }else {
+                //     alert(keyColumn + ' "' + this.item[keyColumn] + '" is already exists')
+                // }
 
             },
             updateItem: function(){
@@ -221,10 +176,6 @@
                 },
                 props: ['mode','item','fields','title'],
                 methods: {
-                    // create: function() {
-                    //     this.show = false
-                    //     this.$emit('create-item')
-                    // },
                     close: function() {
                         this.show =  false
                     },

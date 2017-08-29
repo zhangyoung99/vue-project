@@ -31,6 +31,7 @@ var app = new Vue({
     let oldDataString = window.localStorage.getItem('myTodos')
     let oldData = JSON.parse(oldDataString)
     this.todoList = oldData || []
+    
     this.currentUser = this.getCurrentUser();    
 
   },  
@@ -48,11 +49,8 @@ var app = new Vue({
       this.todoList.splice(idx,1)
     },
     signUp: function(){
-      // 新建 AVUser 对象实例
       let user = new AV.User();
-      // 设置用户名
       user.setUsername('this.formData.username');
-      // 设置密码
       user.setPassword('this.formData.password');
       user.signUp().then((loginedUser) => {
           this.currentUser =  this.getCurrentUser();

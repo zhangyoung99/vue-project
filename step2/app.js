@@ -21,7 +21,7 @@ var app = new Vue({
     addToDo() {
       this.todoList.push({
         title: this.newTodo,
-        createdAt: new Date(),
+        // createdAt: new Date(),
         done: false
       })
       this.newTodo = '' //清空input.value

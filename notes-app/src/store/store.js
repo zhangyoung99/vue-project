@@ -17,7 +17,7 @@ export default new Vuex.Store({
         ADD_NOTE (state) {
             /**
              * text 默认文字
-             * favorite 收藏标示
+             * favorite 收藏标记
              */
             const newNote = {
                 text: 'new note',

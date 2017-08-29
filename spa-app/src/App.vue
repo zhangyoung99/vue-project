@@ -1,10 +1,8 @@
 <template>
  <div id="app">
        <p>input repo name</p>
-       <main>
-          <githubInput />
-          <githubOutput />
-        </main>   
+       <githubInput />
+       <githubOutput />  
  </div>
 </template>
 

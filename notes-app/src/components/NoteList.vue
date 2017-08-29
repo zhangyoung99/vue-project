@@ -11,7 +11,7 @@
              All Notes
            </button>
        </div>
-       <div class="btn-group" role="group">
+       <div class="btn-group" role="group" style="margin-left:-4px;">
           <button type="button" class="btn btn-default"
             @click = "show = 'favorites'"
             :class="{active: show ==='favorites'}">

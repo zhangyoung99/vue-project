@@ -8947,7 +8947,7 @@ module.exports = Vue$3;
 /* 1 */
 /***/ (function(module, exports) {
 
-throw new Error("Module parse failed: /Users/zhangyoung/Desktop/vue-demo/spa-app/src/App.vue Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type.\n| <template>\n|  <div id=\"app\">\n|     <div class=\"wrap\">");
+throw new Error("Module parse failed: /Users/zhangyoung/Desktop/vue-demo/spa-app/src/App.vue Unexpected token (1:0)\nYou may need an appropriate loader to handle this file type.\n| <template>\n|  <div id=\"app\">\n|        <p>input repo name</p>");
 
 /***/ }),
 /* 2 */

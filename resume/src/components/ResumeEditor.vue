@@ -18,8 +18,8 @@
             <div class="resumeField" v-for="(value,key) in subitem">
                 <label> {{key}} </label>
                 <input type="text" :value="value" @input="changeResumeField(`${item.field}.${i}.${key}`, $event.target.value)">
-              </div>
-           </div>
+            </div>
+          </div>
         </div>
         <div v-else class="resumeField" v-for="(value,key) in resume[item.field]">
             <label>{{key}}</label>

@@ -17,6 +17,7 @@
   import Toolbar from './components/Toolbar'
   import resumeEditor from './components/resumeEditor'
   import resumePreview from './components/resumePreview'
+  import icons    from  './assets/icons'
 
   export default {
     name: 'app',
@@ -27,6 +28,9 @@
     },
     components: {
       Toolbar,resumeEditor,resumePreview
+    },
+    created(){
+     document.body.insertAdjacentHTML('afterbegin', icons) 
     }
   }
 </script>
@@ -54,5 +58,12 @@
   #resumePreview {
     width: 60%;
     background: #777;
+  }
+  svg.icon{
+    height: 1em;
+    width: 1em;
+    fill: currentColor;
+    vertical-align: -0.1em;
+    font-size:16px;
   }
 </style>

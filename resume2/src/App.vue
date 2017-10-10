@@ -18,14 +18,11 @@
   import resumeEditor from './components/resumeEditor'
   import resumePreview from './components/resumePreview'
   import icons    from  './assets/icons'
+  import store from './store/store'
 
   export default {
     name: 'app',
-    data() {
-      return {
-        text: 'hello'
-      }
-    },
+    store,
     components: {
       Toolbar,resumeEditor,resumePreview
     },

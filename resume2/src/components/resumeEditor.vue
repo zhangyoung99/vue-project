@@ -56,7 +56,7 @@ export default {
 
 <style lang="scss" scoped>
   #resumeEditor {
-      // height: 80vh;
+      // height: 100vh;
       background: #fff;
       box-shadow:0 1px 3px 0 rgba(0,0,0,0.25);
       display: flex;

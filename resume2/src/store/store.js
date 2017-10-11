@@ -43,6 +43,9 @@ export default new Vuex.Store({
         }
     },
     mutations: {
+        initState(state,payload){
+            Object.assign(state,payload)
+        },
         switchTab (state,field) {
             state.selected = field
         },

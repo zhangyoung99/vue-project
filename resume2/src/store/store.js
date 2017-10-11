@@ -48,9 +48,11 @@ export default new Vuex.Store({
         },
         switchTab (state,field) {
             state.selected = field
+            localStorage.setItem('state', JSON.stringify(state))
         },
         updateResume(state, { path, value }){
             objectPath.set(state.resume, path, value)
+            localStorage.setItem('state', JSON.stringify(state))
         }
     }
 })

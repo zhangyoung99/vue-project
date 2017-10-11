@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import objectPath from 'object-path'
 
 Vue.use(Vuex)
 
@@ -44,6 +45,9 @@ export default new Vuex.Store({
     mutations: {
         switchTab (state,field) {
             state.selected = field
+        },
+        updateResume(state, { path, value }){
+            objectPath.set(state.resume, path, value)
         }
     }
 })

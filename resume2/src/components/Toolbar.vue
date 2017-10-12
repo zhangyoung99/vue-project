@@ -3,11 +3,17 @@
     <div class="wrapper">
       <span class="logo">resumer</span>
       <div class="actions">
-        <a class="button primary" href="#" @click.prevent="signUpDialogVisible = true">注册</a>
-        <myDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">
-          这是slot的内容
-        </myDialog>
-        <a class="button" href="#">登录</a>
+        <div v-if="logined" class="userActions">
+          <span>你好,{{user.username}}</span>
+          <a class="button" href="#" @click.prevent="signOut">登出</a>
+        </div>
+        <div v-else class="userActions">
+          <a class="button primary" href="#" @click.prevent="signUpDialogVisible = true">注册</a>
+          <myDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">
+            <signUpForm  @success="signIn($event)"></signUpForm>
+          </myDialog>
+          <a class="button" href="#">登录</a>        
+        </div>
       </div>
     </div>
   </div>
@@ -17,6 +23,8 @@
 <script>
 
   import myDialog from './myDialog'
+  import signUpForm from './signUpForm'
+  import AV from '../lib/leancloud'
   export default {
    name: 'Toolbar',
    data(){
@@ -24,7 +32,25 @@
        signUpDialogVisible: false
      }
    },
-   components:{ myDialog }
+   computed: {
+     user(){
+       return this.$store.state.user
+     },
+     logined(){
+       return this.user.id
+     }
+   },
+   components:{ myDialog,signUpForm },
+   methods: {
+     signOut(user){
+       AV.User.logOut()
+       this.$store.commit('removeUser')
+     },
+     signIn(user){
+       this.signUpDialogVisible = false
+       this.$store.commit('setUser',user)
+     }
+   }
   }
 
 </script>
@@ -54,6 +80,7 @@
       text-decoration: none;
       border: 1px solid #e5e5e5;
       text-align: center;
+      pointer: cursor;
     }
     .primary {
       background: #00C15E;

@@ -51,6 +51,9 @@ export default {
             display: flex;
             justify-content: space-between;
             border-bottom: 1px solid #666; 
+            .close {
+                cursor: pointer;
+            }
         }
         > main {
             padding: 1rem;

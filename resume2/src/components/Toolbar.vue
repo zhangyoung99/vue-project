@@ -1,10 +1,10 @@
 <template>
   <div id="Toolbar">
-    <div class="wrapper">
+    <div class="dialogWrapper">
       <span class="logo">resumer</span>
       <div class="actions">
         <div v-if="logined" class="userActions">
-          <span>你好,{{user.username}}</span>
+          <span class="welcome">你好,{{user.username}}</span>
           <a class="button" href="#" @click.prevent="signOut">登出</a>
         </div>
         <div v-else class="userActions">
@@ -12,24 +12,28 @@
           <myDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">
             <signUpForm  @success="signIn($event)"></signUpForm>
           </myDialog>
-          <a class="button" href="#">登录</a>        
+          <a class="button" href="#" @click.prevent="signInDialogVisible = true">登录</a> 
+          <myDialog tiitle="登录" :visible="signInDialogVisible" @close="signInDialogVisible = false">
+            <signInForm></signInForm>
+          </myDialog>       
         </div>
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
 
   import myDialog from './myDialog'
   import signUpForm from './signUpForm'
+  import signInForm from './signInForm'
   import AV from '../lib/leancloud'
   export default {
    name: 'Toolbar',
    data(){
      return {
-       signUpDialogVisible: false
+       signUpDialogVisible: false,
+       signInDialogVisible: false
      }
    },
    computed: {
@@ -40,9 +44,9 @@
        return this.user.id
      }
    },
-   components:{ myDialog,signUpForm },
+   components:{ myDialog,signUpForm,signInForm},
    methods: {
-     signOut(user){
+     signOut(){
        AV.User.logOut()
        this.$store.commit('removeUser')
      },
@@ -59,7 +63,7 @@
   #Toolbar {
     height: 64px;
     background: #fff;
-    .wrapper {
+    .dialogWrapper {
       margin-left: 20px;
       .logo {
         font-size: 20px;
@@ -85,6 +89,15 @@
     .primary {
       background: #00C15E;
       color: #fff;
+    }
+    .actions {
+      display: flex;
+      .userActions {
+        margin-right: 3rem;
+        .welcome {
+          margin-right: .5rem;
+        }
+      }
     }
   }
 </style>

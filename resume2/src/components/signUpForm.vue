@@ -1,13 +1,13 @@
 <template>
-    <div>
+    <div class="formWrapper">
         <form @submit.prevent="signUp">
             <div class="row">
-                <label>用户名</label>
+                <label>用户名:</label>
                 <input type="text" v-model="formData.username" required>
                 <span class="errorMessage">{{errorMessage}}</span>
             </div>
             <div class="row">
-                <label>密码</label>
+                <label>密码:</label>
                 <input type="password" v-model="formData.password" required>
             </div>
             <div class="actions">
@@ -53,6 +53,33 @@ export default {
 </script>
 
 
-<style>
-
+<style lang="scss">
+    .formWrapper {
+        label {
+            display: inline-block;
+            width: 60px;
+            text-align: right;
+        }
+        input[type=text] {
+            width: 200px;
+            border: 1px solid #e5e5e5;
+            margin-left: 1rem;
+        }
+        input[type=password] {
+            width: 200px;
+            border: 1px solid #e5e5e5;
+            margin-left: 1rem;
+        }
+        input[type=submit] {
+            display: inline-block;
+            width: 60px;
+            height: 32px;
+            line-height: 32px;
+            text-algin: center;
+            border: none;
+        }
+        .actions {
+            margin-left: 60px;
+        }
+    }
 </style>

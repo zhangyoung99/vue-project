@@ -40,8 +40,8 @@ export default {
         align-items: center;
     }
     .dialog {
-        background: #e5e5e5;
-        border: 1px solid #666;
+        background: #fff;
+        border: 1px solid #e5e5e5;
         min-width: 20rem;
         min-height: 4rem;
         > header {
@@ -50,12 +50,12 @@ export default {
             // line-height: 4rem;
             display: flex;
             justify-content: space-between;
-            border-bottom: 1px solid #666; 
+            border-bottom: 1px solid #e5e5e5; 
             .close {
                 cursor: pointer;
             }
         }
-        > main {
+        > section {
             padding: 1rem;
         }
     }

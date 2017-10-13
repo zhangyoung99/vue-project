@@ -1,6 +1,6 @@
 # vue项目
 
-### todoList
+### todo
 
 - [todolist](https://zhangyoung99.github.io/vue-demo/step2/page.html)
 
@@ -12,6 +12,6 @@
 
 - [在线简历编辑器resume](https://zhangyoung99.github.io/vue-demo/resume/dist/index.html#/)
 
-### demo-CRUD示例
+### demo-CRUD
 
 - [CRUD功能示例-vue](https://zhangyoung99.github.io/vue-demo/demo-CRUD/index.html)

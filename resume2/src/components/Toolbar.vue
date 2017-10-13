@@ -1,6 +1,6 @@
 <template>
   <div id="Toolbar">
-    <div class="dialogWrapper">
+    <div class="wrapper">
       <span class="logo">resumer</span>
       <div class="actions">
         <div v-if="logined" class="userActions">
@@ -14,7 +14,7 @@
           </myDialog>
           <a class="button" href="#" @click.prevent="signInDialogVisible = true">登录</a> 
           <myDialog tiitle="登录" :visible="signInDialogVisible" @close="signInDialogVisible = false">
-            <signInForm></signInForm>
+            <signInForm @success="signIn($event)"></signInForm>
           </myDialog>       
         </div>
       </div>
@@ -41,7 +41,7 @@
        return this.$store.state.user
      },
      logined(){
-       return this.user.id
+       return this.$store.state.user.id
      }
    },
    components:{ myDialog,signUpForm,signInForm},
@@ -52,6 +52,7 @@
      },
      signIn(user){
        this.signUpDialogVisible = false
+       this.signInDialogVisible = false
        this.$store.commit('setUser',user)
      }
    }
@@ -63,7 +64,7 @@
   #Toolbar {
     height: 64px;
     background: #fff;
-    .dialogWrapper {
+    .wrapper {
       margin-left: 20px;
       .logo {
         font-size: 20px;

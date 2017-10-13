@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper" v-show="visible">
+    <div class="dialogWrapper" v-show="visible">
         <div class="dialog">
           <header>
             <span>{{title}}</span>
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .wrapper {
+    .dialogWrapper {
         position: fixed;
         top: 0;
         left: 0;

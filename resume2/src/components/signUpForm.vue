@@ -40,7 +40,7 @@ export default {
              var user = new AV.User();
              user.setUsername(username)
              user.setPassword(password)
-             user.signUp().then(()=>{
+             user.signUp().then(() =>{
                  this.$emit('success', getAVUser())
              },(error)=>{
                  this.errorMessage = getErrorMessage(error)

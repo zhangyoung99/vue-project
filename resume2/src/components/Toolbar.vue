@@ -10,10 +10,10 @@
         <div v-else class="userActions">
           <a class="button primary" href="#" @click.prevent="signUpDialogVisible = true">注册</a>
           <myDialog title="注册" :visible="signUpDialogVisible" @close="signUpDialogVisible = false">
-            <signUpForm  @success="signIn($event)"></signUpForm>
+            <signUpForm @success="signIn($event)"></signUpForm>
           </myDialog>
           <a class="button" href="#" @click.prevent="signInDialogVisible = true">登录</a> 
-          <myDialog tiitle="登录" :visible="signInDialogVisible" @close="signInDialogVisible = false">
+          <myDialog title="登录" :visible="signInDialogVisible" @close="signInDialogVisible = false">
             <signInForm @success="signIn($event)"></signInForm>
           </myDialog>       
         </div>
@@ -41,7 +41,7 @@
        return this.$store.state.user
      },
      logined(){
-       return this.$store.state.user.id
+       return this.user.id
      }
    },
    components:{ myDialog,signUpForm,signInForm},

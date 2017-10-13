@@ -3,12 +3,12 @@
         <form @submit.prevent="signIn">
             <div class="row">
                 <label>用户名:</label>
-                <input type="text" v-model="formData.username" required>
+                <input type="text" v-model="formData.username" placeholder="默认账号zhang" required>
                 <span class="errorMessage">{{errorMessage}}</span>
             </div>
             <div class="row">
                 <label>密码:</label>
-                <input type="password" v-model="formData.password" required>
+                <input type="password" v-model="formData.password" placeholder="默认密码zhang"required>
             </div>
             <div class="actions">
                 <input type="submit" value="提交">

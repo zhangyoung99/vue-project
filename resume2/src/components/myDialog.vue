@@ -41,13 +41,12 @@ export default {
     }
     .dialog {
         background: #fff;
-        border: 1px solid #e5e5e5;
-        min-width: 20rem;
+        // border: 1px solid #e5e5e5;
+        min-width: 25rem;
         min-height: 4rem;
         > header {
             height: 4rem;
             padding: 1rem;
-            // line-height: 4rem;
             display: flex;
             justify-content: space-between;
             border-bottom: 1px solid #e5e5e5; 

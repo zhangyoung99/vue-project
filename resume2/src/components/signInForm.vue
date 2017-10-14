@@ -8,7 +8,7 @@
             </div>
             <div class="row">
                 <label>密码:</label>
-                <input type="password" v-model="formData.password" placeholder="默认密码zhang"required>
+                <input type="password" v-model="formData.password" placeholder="默认密码zhang" required>
             </div>
             <div class="actions">
                 <input type="submit" value="提交">

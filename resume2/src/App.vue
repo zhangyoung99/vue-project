@@ -50,7 +50,7 @@
   .page>section {
     min-width: 1024px;
     max-width: 1440px;
-    margin-top: 16px;
+    margin-top: 1rem;
     display: flex;
     justify-content: space-around;
     width: 100%;

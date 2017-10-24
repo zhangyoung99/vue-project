@@ -3,10 +3,10 @@
     <header>
       <Toolbar />
     </header>
-    <section>
+    <main>
       <resumeEditor />
       <resumePreview />
-    </section>
+    </main>
   </div>
 </template>
 
@@ -45,9 +45,9 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background: #e5e5e5;
+    background: #dde5ea;
   }
-  .page>section {
+  .page>main {
     min-width: 1024px;
     max-width: 1440px;
     margin-top: 1rem;
@@ -58,11 +58,9 @@
   }
   #resumeEditor {
     width: 35%;
-    background: #444;
   }
   #resumePreview {
     width: 60%;
-    background: #777;
   }
   svg.icon{
     height: 1em;

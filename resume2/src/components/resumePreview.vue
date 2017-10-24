@@ -2,7 +2,7 @@
     <div id="resumePreview">
         <section data-name="profile" v-model="resume.profile">
             <h1>{{resume.profile.name}}</h1>
-            <h2>{{resume.profile.title}}</h2>
+            <h3>{{resume.profile.title}}</h3>
             <p>{{resume.profile.city}}</p>
         </section>
 
@@ -30,8 +30,9 @@
             <h2>教育经历</h2>
             <ol>
                 <li v-for="item in resume.education">
-                    <h3>{{item.school}}</h3>
-                    <p v-show="item.content">{{item.content}}</p>
+                    <span>{{item.school}}</span>
+                    <span v-show="item.content">{{item.content}}</span>
+                    <span>{{item.during}}</span>
                 </li>
             </ol>
         </section>
@@ -78,6 +79,14 @@ export default {
             }
             h2 {
                 margin-bottom: .5rem;
+                padding: 5px;
+                background: #dde5ea;
+            }
+            li {
+                margin: 10px;
+                h3 {
+                    margin: 10px;
+                }
             }
         }
     }

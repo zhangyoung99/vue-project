@@ -1,6 +1,7 @@
 <template>
   <div id="Toolbar">
     <div class="wrapper">
+      <img class="logo-img" src='../assets/logo.png'>
       <span class="logo">resumer</span>
       <div class="actions">
         <div v-if="logined" class="userActions">
@@ -63,9 +64,17 @@
 <style lang="scss" scoped>
   #Toolbar {
     height: 64px;
-    background: #fff;
+    background: #354561;
+    // background: #FAFBFC;
+    // background: #e5e5e5;
+    color: #fff;
     .wrapper {
       margin-left: 20px;
+      .logo-img {
+        width: 50px;
+        height: 50px;
+        vertical-align: middle;
+      }
       .logo {
         font-size: 20px;
         line-height: 64px;
@@ -83,7 +92,9 @@
       line-height: 24px;
       padding: 5px;
       text-decoration: none;
-      border: 1px solid #e5e5e5;
+      // color: #fff;
+      background: #fff;
+      // border: 1px solid #e5e5e5;
       text-align: center;
       pointer: cursor;
     }

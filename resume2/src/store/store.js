@@ -22,18 +22,18 @@ export default new Vuex.Store({
           ],
           profile: {
             name: '滴水',
-            city: 'shenzhen',
+            city: '深圳',
             title: '前端工程师'
           },
           workExperience: [
-            {company: 'SAE',  content:'机械工程师'},
-            {company: 'CLQX', content:'FE'}
+            {company: 'SAE',  content: '机械工程师'},
+            {company: 'CLQX', content: '前端开发工程师'}
           ],
           education: [
-            {school: '怪兽大学',content: '狮吼功'}
+            {school: '怪兽大学',major: '狮吼功', during: '2008-2012'}
           ],
           projects: [
-            {name: '在线简历编辑器',content:'在线简历编辑器'},
+            {name: '在线简历编辑器',content:'在线简历编辑器，实现编辑区项目切换'},
             {name: '记事本应用',content: 'vue2.0+vuex实现的记事本应用，满足正常的记事本需求'}
           ],
           awards: [

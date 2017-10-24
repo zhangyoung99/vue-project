@@ -19,7 +19,6 @@
             <label>{{key}}</label>
             <input type="text" :value="value" @input="changeResumeField(`${item.field}.${i}.${key}`,$event.target.value)">
           </div>
-          <hr>
         </div>
       </div>
       <div v-else class="resumeField" v-for="(value,key) in resume[item.field]">
@@ -33,7 +32,6 @@
 </template>
 
 <script>
-
 export default {
     name: 'resumeEditor',
     computed: {
@@ -58,7 +56,6 @@ export default {
       }
     }
 }
-
 </script>
 
 

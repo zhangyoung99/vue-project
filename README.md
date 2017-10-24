@@ -14,5 +14,5 @@
 
 ### resume
 
-- [在线简历编辑器resume](https://zhangyoung99.github.io/vue-demo/resume/dist/index.html#/)
+- [在线简历编辑器](https://zhangyoung99.github.io/vue-demo/resume2/dist/index.html)
 

@@ -10,14 +10,15 @@
 import 'normalize.css/normalize.css'
 import './assets/reset.css'
 
-import Toolbar from  './components/Toolbar'
-import NoteList from './components/NoteList'
-import Editor from   './components/Editor'
+import Toolbar  from  './components/Toolbar'
+import NoteList from  './components/NoteList'
+import Editor   from  './components/Editor'
 
 
 export default {
   name: 'app', 
-  components: {Toolbar, NoteList, Editor}
+  components: {Toolbar, NoteList, Editor},
+
 }
 </script>
 

@@ -41,6 +41,7 @@ export default {
     }
     .dialog {
         background: #fff;
+        color: #000;
         // border: 1px solid #e5e5e5;
         min-width: 25rem;
         min-height: 4rem;

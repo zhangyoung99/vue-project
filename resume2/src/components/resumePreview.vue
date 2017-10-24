@@ -31,7 +31,7 @@
             <ol>
                 <li v-for="item in resume.education">
                     <span>{{item.school}}</span>
-                    <span v-show="item.content">{{item.content}}</span>
+                    <span v-show="item.major">{{item.major}}</span>
                     <span>{{item.during}}</span>
                 </li>
             </ol>

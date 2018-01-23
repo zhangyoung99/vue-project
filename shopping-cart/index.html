@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>shopping-cart</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="page-shopping-cart" id="shopping-cart">
+        <h4 class="cart-title">购物清单</h4>
+        <div class="cart-product-header">
+            <div class="td-item td-check">
+                <span class="check-all"></span>
+                <input type="checkbox" v-model="isSelectAll" @click="selectProduct(isSelectAll)" :class="{'check-true':isSelectAll}"
+                    class="check-all">全选
+            </div>
+            <div class="td-item td-product">商品</div>
+            <div class="td-item td-num">数量</div>
+            <div class="td-item td-price">单价(元)</div>
+            <div class="td-item td-total">金额(元)</div>
+            <div class="td-item td-action">操作</div>
+        </div>
+        <div class="cart-product-panel">
+            <div class="panel-item" v-for="(item,index) in productList">
+                <div class="td-item td-check">
+                    <span></span>
+                    <input type="checkbox" v-model="item.select" @click="item.select = !item.select" :class="{'check-true':item.select}">
+                </div>
+                <div class="td-item td-product">
+                    <img src="imgs/test.jpg" alt="商品" width="98" height="98">
+                    <span>{{item.prod_name}}</span>
+                </div>
+                <div class="td-item td-num">
+                    <a href="#" class="num-btn btn-add" @click="item.prod_num > 1 ? item.prod_num-- : 1">
+                        <span>-</span>
+                    </a
+                    ><input type="text" class="num-input" value="1" v-model="item.prod_num"
+                    ><a href="#" class="num-btn btn-sub" @click="item.prod_num++">
+                        <span>+</span>
+                    </a>
+                </div>
+                <div class="td-item td-price red-text">￥
+                    <span>{{item.prod_price}}</span>
+                </div>
+                <div class="td-item td-total red-text">￥
+                    <span>{{item.prod_price*item.prod_num}}</span>
+                </div>
+                <div class="td-item td-action">
+                    <a href="#" class="td-delete" @click="deleteOneProduct">删除</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-product-info">
+            <a href="#" class="info-item info-delete" @click="deleteAllProduct">
+                <img src="./imgs/delete.png" alt="删除" width="20" height="20">删除所选商品</a>
+            <a href="#" class="info-item info-keep">
+                <img src="./imgs/shopping-cart.png" alt="购物车" width="20" height="20"> 继续购物</a>
+            <span class="info-item info-num">
+                <span class="red-text">{{getTotal.totalNum}}</span>件商品(不含运费)</span>
+            <span class="info-item info-total red-text">￥
+                <span>{{getTotal.totalPrice}}</span>
+            </span>
+            <a href="#" class="info-item info-buy">去结算</a>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@2.5.10/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#shopping-cart',
+            data: {
+                productList: [{
+                        'prod_name': 'Canon/佳能 PowerShot SX50 HS',
+                        'prod_num': '1',
+                        'prod_price': '12000'
+
+                    },
+                    {
+                        'prod_name': 'Canon/佳能 PowerShot SX50 HS',
+                        'prod_num': '1',
+                        'prod_price': '12000'
+                    },
+                    {
+                        'prod_name': 'Canon/佳能 PowerShot SX50 HS',
+                        'prod_num': '1',
+                        'prod_price': '12000'
+                    },
+                ]
+            },
+            mounted() {
+                //为productList添加select（是否选中）字段，初始值为false
+                this.productList.map((item) => {
+                    this.$set(item, 'select', false);
+                })
+            },
+            computed: {
+                isSelectAll() {
+                    if (this.productList.length === 0) {
+                        return false;
+                    }
+                    return this.productList.every((val) => val.select)
+                },
+                getTotal() {
+                    let totalPrice = 0,
+                        _proList = this.productList.filter(val => val.select) //获取productList中select为true的数据。
+
+                    for (let i = 0, len = _proList.length; i < len; i++) {
+                        totalPrice += _proList[i].prod_num * _proList[i].prod_price
+                    }
+                    return {
+                        totalNum: _proList.length,
+                        totalPrice: totalPrice
+                    }
+                }
+            },
+            methods: {
+                //全选与取消全选
+                selectProduct: function (_isSelect) {
+                    //遍历productList，全部取反
+                    for (var i = 0, len = this.productList.length; i < len; i++) {
+                        this.productList[i].select = !_isSelect;
+                    }
+                },
+                // 删除已选择的所有产品记录
+                deleteAllProduct() {
+                    this.productList = this.productList.filter((item) => {
+                        return !item.select
+                    })
+                },
+                // 删除单条记录，使用for循环的索引index删除
+                deleteOneProduct(index) {
+                    this.productList.splice(index, 1)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

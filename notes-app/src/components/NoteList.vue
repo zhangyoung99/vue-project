@@ -5,18 +5,18 @@
        <h2>NOTES</h2>
 
        <div class="btn-group" role="group">
-           <button type="button" class="btn btn-default"
-             @click = "show = 'all'"
+           <a href="#" class="btn btn-default"
+             @click.prevent = "show = 'all'"
              :class="{active: show ==='all'}">
              All Notes
-           </button>
+           </a>
        </div>
        <div class="btn-group" role="group" style="margin-left:-4px;">
-          <button type="button" class="btn btn-default"
-            @click = "show = 'favorites'"
+          <a href="#" class="btn btn-default"
+            @click.prevent = "show = 'favorites'"
             :class="{active: show ==='favorites'}">
             Favorites
-          </button>
+          </a>
        </div>
     </div>
 
@@ -26,9 +26,9 @@
         <a v-for="note in filteredNotes"
           class="list-group-item" href="#"
           :class="{active: activeNote === note}"
-          @click="updateActiveNote(note)">
+          @click.prevent="updateActiveNote(note)" :key="note.text">
           <p class="list-group-item-heading">
-            {{note.text.trim().substring(0, 50)}}
+            {{note.text.trim().substring(0, 30)}}
             <!--<i @click="deleteNote" class="btn-del">x</i>-->
           </p>
         </a>

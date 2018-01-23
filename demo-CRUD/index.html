@@ -7,7 +7,7 @@
     <title>CURD</title>
     <link rel="stylesheet" href="./css/style.css">
     <style>
-        /* 
+           /* 
             * 由于IE不支持<template>标签，所以template标签中的内容在IE下会直接显示出来。
             * 将模板设为隐藏即可解决这个问题，template标签各浏览器支持请参考：http://caniuse.com/#feat=template
             */
@@ -17,7 +17,7 @@
     </style>
 </head>
 <body>
-    <div id="app">
+    <div id="app" v-cloak>
         <div class="container">
             <div class="form-group">
                 <form>
@@ -67,7 +67,7 @@
                         <h1 class="dialog-title">{{ title }}</h1>
                         <!-- <span @click="close">X</span> -->
                     </header>
-                     <div class="dialog-body">
+                    <div class="dialog-body">
                         <div v-for="field in fields" class="form-group">
                             <label>{{ field.name }}</label>
                             <select v-if="field.dataSource" v-model="item[field.name]" :disabled="mode === 2 && field.isKey">
@@ -117,7 +117,7 @@
                 // 根据主键查找当前修改的数据
                 // var currentItem = this.findItemByKey(key)
                 // 对话框的标题
-                this.title = 'Edit Item - ' + key
+                this.title =  key
                 // mode = 2表示修改模式
                 this.mode = 2
                 //使用$refs，是父组件引用子组件

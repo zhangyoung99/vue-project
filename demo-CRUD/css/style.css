@@ -12,6 +12,12 @@ html {
 body{
 	margin-top: 100px;
 }
+[cloak]{
+	display: none;
+}
+a{
+	text-decoration: none;
+}
 
 table,
 td,

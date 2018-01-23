@@ -1,45 +1,45 @@
 <template>
     <div id="resumePreview">
-        <section data-name="profile" v-model="resume.profile">
+        <section data-name="profile" :value="resume.profile">
             <h1>{{resume.profile.name}}</h1>
             <h3>{{resume.profile.title}}</h3>
             <p>{{resume.profile.city}}</p>
         </section>
 
-        <section data-name="workExperience" v-model="resume.workExperience">
+        <section data-name="workExperience" :value="resume.workExperience">
             <h2>工作经历</h2>
             <ol>
-              <li v-for="item in resume.workExperience">
+              <li v-for="item in resume.workExperience" :key="item.workExperience">
                 <h3>{{item.company}}</h3>
                 <p v-show="item.content">{{item.content}}</p>
               </li>
             </ol>
         </section>
 
-        <section data-name="projects" v-model="resume.projects">
+        <section data-name="projects" :value="resume.projects">
             <h2>项目经历</h2>
             <ol>
-                <li v-for="item in resume.projects">
+                <li v-for="item in resume.projects" :key="item.projects">
                     <h3>{{item.name}}</h3>
                     <p v-show="item.content">{{item.content}}</p>
                 </li>
             </ol>
         </section>
 
-        <section data-name="education" v-model="resume.education">
+        <section data-name="education" :value="resume.education">
             <h2>教育经历</h2>
             <ol>
-                <li v-for="item in resume.education">
+                <li v-for="item in resume.education" :key="item.education">
                     <span>{{item.school}}</span>
                     <span v-show="item.major">{{item.major}}</span>
                     <span>{{item.during}}</span>
                 </li>
             </ol>
         </section>
-        <section data-name="contacts" v-model="resume.contacts">
+        <section data-name="contacts" :value="resume.contacts">
             <h2>联系方式</h2>
             <ol>
-                <li v-for="item in resume.contacts">
+                <li v-for="item in resume.contacts" :key="item.contacts">
                     <p>{{item.tel}}</p>
                     <p>{{item.email}}</p>
                 </li>

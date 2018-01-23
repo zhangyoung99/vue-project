@@ -45,6 +45,8 @@ export default {
              },(error)=>{
                  this.errorMessage = getErrorMessage(error)
              })
+             this.username = ''
+             this.password = ''
 
         }
     }
@@ -75,8 +77,11 @@ export default {
             width: 60px;
             height: 32px;
             line-height: 32px;
-            text-algin: center;
+            text-align: center;
             border: none;
+        }
+        .errorMessage {
+            color: #f00;
         }
         .actions {
             margin-left: 60px;

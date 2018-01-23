@@ -25,7 +25,7 @@ var app = new Vue({
         done: false
       })
       this.newTodo = '' //清空input.value
-     },
+    },
     removeToDo(todo) {
       let index = this.todoList.indexOf(todo)
       this.todoList.splice(index,1)

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tab-demo</title>
+    <style>
+        html,body {
+            margin: 0;
+            padding: 0;
+        }
+        #tab {
+            width: 600px;
+            margin: 0 auto;
+        }
+        #tab .tab-nav {
+            width: 600px;
+            display: flex;
+        }
+        #tab .tab-nav a {
+            flex: auto;
+            text-align: center;
+            line-height: 30px;
+            background: #f8f8f8;
+            text-decoration: none;
+            padding: 10px;
+            color: #666;
+        }
+        #tab .tab-nav a {
+            border-left: 1px solid #e5e5e5;
+        } 
+        #tab .tab-nav .active {
+            background: #fff;
+        }
+        #tab .tab-panel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #e5e5e5;
+            height: 300px;
+            background: #FFEBCF;
+        }
+    </style>
+</head>
+<body>
+    <div id="tab">
+        <div class="tab-nav">
+            <a href="#" @click.prevent="show = 0" :class="{active: show === 0}">html</a>
+            <a href="#" @click.prevent="show = 1" :class="{active: show === 1}">css</a>
+            <a href="#" @click.prevent="show = 2" :class="{active: show === 2}">javascript</a>
+            <a href="#" @click.prevent="show = 3" :class="{active: show === 3}">vue</a>
+        </div>
+        <div class="tab-panel">
+            <div v-show="show === 0">html</div>
+            <div v-show="show === 1">css</div>
+            <div v-show="show === 2">javascript</div>
+            <div v-show="show === 3">vue</div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@2.3.4/dist/vue.min.js"></script>
+    <script>
+        new Vue({
+            el: '#tab',
+            data: {
+                show: 0
+            }
+        })
+    </script>
+</body>
+</html>

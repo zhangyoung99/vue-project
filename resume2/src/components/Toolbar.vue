@@ -65,8 +65,6 @@
   #Toolbar {
     height: 64px;
     background: #354561;
-    // background: #FAFBFC;
-    // background: #e5e5e5;
     color: #fff;
     .wrapper {
       margin-left: 20px;
@@ -96,7 +94,7 @@
       background: #fff;
       // border: 1px solid #e5e5e5;
       text-align: center;
-      pointer: cursor;
+      cursor: pointer;
     }
     .primary {
       background: #00C15E;

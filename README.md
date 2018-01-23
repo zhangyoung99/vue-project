@@ -16,3 +16,11 @@
 
 - [在线简历编辑器](https://zhangyoung99.github.io/vue-demo/resume2/dist/index.html)
 
+### shopping-cart
+
+- [购物车示例](https://zhangyoung99.github.io/vue-demo/shopping-cart/index.html)
+
+### tab切换-vue
+
+- [tab切换](https://zhangyoung99.github.io/vue-demo/tab/index.html)
+

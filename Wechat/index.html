@@ -36,14 +36,14 @@
     }
     .mint-tabbar > .mint-tab-item.is-selected{
         background: none;
-        color:#1aad19
+        color:#1aad19;
 	}
     </style>
 </head>
 <body>
     <div id="app" v-cloak>
             <mt-tab-container v-model="selected" id="wx-wrapper">
-                <mt-tab-container-item id="index">
+                <mt-tab-container-item id="index" style="overflow: auto;">
                     <mt-search cancel-text="取消" placeholder="搜索"></mt-search>
                     <mt-cell v-for="(item,index) in 12" is-link >
                         <img slot="icon" src="http://iph.href.lu/60x60" width="60" height="60" style="float:left;margin:10px 10px 10px 0;">

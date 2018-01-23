@@ -71,7 +71,7 @@ export default {
             width: 60px;
             height: 32px;
             line-height: 32px;
-            text-algin: center;
+            text-align: center;
             border: none;
         }
         .actions {

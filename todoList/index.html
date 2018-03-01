@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>todoList demo</title>
+    <style>
+        html,body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-size: 14px;
+        }
+        ul,li {
+            list-style-type: none;
+        }
+        #app {
+            width: 800px;
+            margin: 0 auto;
+        }
+        .list-ipt {
+            width: 100%;
+            line-height: 28px;
+            font-size: 14px;
+        }
+        .list .item {
+            margin: 10px 0;
+            padding: 10px;
+        }
+        .item:hover {
+            border: 1px solid #0070FF;
+        }
+        .item .delete {
+            float: right;
+            color: #FF001B;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h2>待办清单列表</h2>
+        <div class="list">
+            <h3>添加待办事项</h3>
+            <input type="text" class="list-ipt" placeholder="输入事项后，按回车" @keyup.enter="addList" v-model="addText">
+            <p class="list-num">共有{{this.proList.length}}个待办事项</p>
+            <p>
+                <input type="radio" name="list" class="choose-type" @click="chooseList(1)"><label>所有目标</label>
+                <input type="radio" name="list" class="choose-type" @click="chooseList(2)"><label for="">已完成目标</label>
+                <input type="radio" name="list" class="choose-type" @click="chooseList(3)"><label for="">未完成目标</label>
+            </p>
+            <ul>
+                <li class="item" v-for="(list,idx) in newList">
+                    <div>
+                        <!-- <span></span> -->
+                        <input type="checkbox">
+                        <span>{{list.name}}</span>
+                        <span class="delete" @click="deleteList(idx)">X</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@2.5.10/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data:{
+                addText: "",
+                prodList:[
+                    { name: "html",status:false },
+                    { name: "css", status:false},
+                    { name: "javascript", status: false}
+                ],
+                newList: []
+            },
+            mounted(){
+                //初始化，把prolist赋值给newList。默认显示所有目标
+                this.newList = this.prodList;
+            },
+            methods:{
+                //添加进来默认status=false,就是未完成状态
+                addList(){
+                    this.prodList.push({
+                        name:this.addText,
+                        status: false
+
+                    })
+                    this.addText = ""
+                },
+                chooseList(type) {
+                    switch(type){
+                        case 1:
+                            this.newList = this.prodList;
+                            break;
+                        case 2:
+                            this.newList = this.prodList.filter(item => item.status);
+                            break;
+                        case 3:
+                            this.newList = this.prodList.filter(item => !item.status);
+                            break;
+
+                    }
+                },
+                deleteList(idx){
+                    this.prodList.splice(idx,1);
+                    //删除数据后，更新至newList
+                    this.newList = this.prodList
+                }
+            }
+        })
+    </script>
+</body>
+</html>

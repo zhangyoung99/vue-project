@@ -29,7 +29,9 @@
         }
         .list-ipt {
             width: 100%;
-            line-height: 28px;
+            line-height: 40px;
+            border-radius: 5px;
+            border: 1px solid #e5e5e5;
             font-size: 14px;
         }
         .list .item {
@@ -52,7 +54,7 @@
         /* li div {
             display: block;
         } */
-        li.editing div{
+        li.editing div {
             display: none;
         }
         li .editing-text {
@@ -86,7 +88,7 @@
                         <span @click="curIndex = idx">{{list.name}}</span>
                         <span class="delete" @click="deleteList(idx)">X</span>
                     </div>
-                    <input type="text" class="editing-text" v-model="list.name" @focus='editBefore(list.name)' @keyup.enter='edited()' @blur='edited()' @keyup.esc='cancelEdit(list)'>
+                    <input type="text" class="editing-text" v-model="list.name" @focus='editBefore(list.name)' @keyup.enter='edited' @blur='edited' @keyup.esc='cancelEdit(list)' v-focus >
                 </li>
             </ul>
         </div>
@@ -103,19 +105,23 @@
                     // { name: "javascript", status: false}
                 ],
                 newList: [],
-                curIndex:"",
-                beforeEditText:"",
+                curIndex: "",
+                beforeEditText: "",
             },
             created(){
-                // localStorage API 保存数据,下次打开能看到上次的事项清单
+                // localStorage 保存数据,下次打开(或刷新)能看到上次的事项清单
                 window.onbeforeunload = () => {
                     let data = JSON.stringify(this.newList);
                     window.localStorage.setItem('keepData',data);
                 }
-                let oldDataString = window.localStorage.getItem('keepData');
-                let oldData = JSON.parse(oldDataString);
-                this.prodList = oldData || []
+                let storage = window.localStorage.getItem('keepData');
+                let todos = JSON.parse(storage);
+                this.prodList = todos || []
 
+            },
+            mounted(){
+                //初始化，把prolist赋值给newList。默认显示所有目标
+                this.newList = this.prodList;
             },
             computed:{
                 //计算属性，返回未完成目标的条数，就是数组里面status=false的条数
@@ -125,15 +131,18 @@
                     }).length;
                 }
             },
-            mounted(){
-                //初始化，把prolist赋值给newList。默认显示所有目标
-                this.newList = this.prodList;
+            directives:{
+                focus:{
+                    update(el){
+                        el.focus();
+                    }
+                }
             },
             methods:{
                 //添加进来默认status=false,就是未完成状态
                 addList(){
                     this.prodList.push({
-                        name:this.addText,
+                        name: this.addText,
                         status: false
 
                     })

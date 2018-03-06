@@ -74,14 +74,14 @@
         <div class="list">
             <h3>添加待办事项</h3>
             <input type="text" class="list-ipt" placeholder="输入事项后，按回车" @keyup.enter="addList" v-model="addText">
-            <p class="list-num">共有{{prodList.length}}件待办事项，{{unfinish == 0?"全部完成了":`完成了${prodList.length-unfinish}件,还有${unfinish}件未完成`}}</p>
+            <p class="list-num">共有{{prodList.length}}件待办事项，{{finish}}</p>
             <p>
                 <input type="radio" name="list" class="choose-type" checked="true" @click="chooseList(1)"><label>所有事项</label>
                 <input type="radio" name="list" class="choose-type" @click="chooseList(2)"><label for="">已完成事项</label>
                 <input type="radio" name="list" class="choose-type" @click="chooseList(3)"><label for="">未完成事项</label>
             </p>
             <ul>
-                <li class="item" v-for="(list,idx) in newList" :class="{'editing': curIndex === idx}">
+                <li class="item" v-for="(list,idx) in newList" :class="{'editing': curIndex === idx}" :key="list.item">
                     <div>
                         <!-- <span></span> -->
                         <input type="checkbox" @click="list.status = !list.status" :class="{'status-atcived':list.status}">
@@ -129,6 +129,13 @@
                     return this.prodList.filter(function(item){
                         return !item.status
                     }).length;
+                },
+                finish (){
+                    if(this.unfinish == 0){
+                        return '全部完成了'
+                    }else{
+                        return `完成了${this.prodList.length - this.unfinish}件,还有${this.unfinish}件未完成`
+                    }
                 }
             },
             directives:{

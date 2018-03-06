@@ -131,11 +131,17 @@
                     }).length;
                 },
                 finish (){
+                    // let len = this.prodList.length - this.unfinish;
+                    if(this.prodList.length == 0){
+                        return '';
+                    } 
                     if(this.unfinish == 0){
                         return '全部完成了'
                     }else{
-                        return `完成了${this.prodList.length - this.unfinish}件,还有${this.unfinish}件未完成`
+                        return `完成了${this.prodList.length - this.unfinish}件，还有${this.unfinish}件未完成`
                     }
+                        
+
                 }
             },
             directives:{

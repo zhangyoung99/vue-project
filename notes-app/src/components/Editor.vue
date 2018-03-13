@@ -3,6 +3,7 @@
   <textarea
     :value="activeNoteText"
     @input="editNote"
+    placeholder="add new text"
     class="form-control">
   </textarea>
 </div>

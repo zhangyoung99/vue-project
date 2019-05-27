@@ -57,9 +57,11 @@
 
         <div class="cart-product-info">
             <a href="#" class="info-item info-delete" @click="deleteAllProduct">
-                <img src="./imgs/delete.png" alt="删除" width="20" height="20">删除所选商品</a>
+                <img src="./imgs/delete.png" alt="删除" width="20" height="20">删除所选商品
+            </a>
             <a href="#" class="info-item info-keep">
-                <img src="./imgs/shopping-cart.png" alt="购物车" width="20" height="20"> 继续购物</a>
+                <img src="./imgs/shopping-cart.png" alt="购物车" width="20" height="20">继续购物
+            </a>
             <span class="info-item info-num">
                 <span class="red-text">{{getTotal.totalNum}}</span>件商品(不含运费)</span>
             <span class="info-item info-total red-text">￥
@@ -118,6 +120,9 @@
                 }
             },
             methods: {
+                increment(){
+                    this.prod_num++
+                },
                 //全选与取消全选
                 selectProduct: function (_isSelect) {
                     //遍历productList，全部取反

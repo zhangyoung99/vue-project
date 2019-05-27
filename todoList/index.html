@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>todoList demo</title>
+    <title>todoList demo</title>   
     <style>
         html,body {
             margin: 0;
@@ -117,24 +117,24 @@
                 let storage = window.localStorage.getItem('keepData');
                 let todos = JSON.parse(storage);
                 this.prodList = todos || []
-
             },
             mounted(){
-                //初始化，把prolist赋值给newList。默认显示所有目标
+                //初始化，把prolist赋值给newList。默认显示所有事项
                 this.newList = this.prodList;
             },
             computed:{
-                //计算属性，返回未完成目标的条数，就是数组里面status=false的条数
+                //计算属性，返回未完成事项的条数，就是数组里面status=false的条数
                 unfinish () {
                     return this.prodList.filter(function(item){
                         return !item.status
                     }).length;
                 },
                 finish (){
-                    // let len = this.prodList.length - this.unfinish;
+                    // 初始时，所有事项prodList条数为0时，文字提示为默认
                     if(this.prodList.length == 0){
                         return '';
                     } 
+                    // 根据事项完成情况来判断文字提示的展现
                     if(this.unfinish == 0){
                         return '全部完成了'
                     }else{

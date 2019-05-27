@@ -1,117 +1,25 @@
 <template>
  <div id="resumeEditor">
    <nav class="editorNav">
-    <ol>
-      <li v-for="(item,index) in resume.config"
-       :class = "{active: item.field === selected}"
-       @click="selected = item.field">
-       <svg class="icon">
-        <use :xlink:href="`#icon-${item.icon}`"></use>
-       </svg>
-      </li>
-    </ol>
+    ol
    </nav>
-   <ol class="panels">
-     <li v-for="item in resume.config" v-show="item.field === selected">
-      <div v-if="resume[item.field] instanceof Array">
-        <div class="subitem" v-for="(subitem,i) in resume[item.field]">
-          <div class="resumeField" v-for="(value,key) in subitem">
-            <label>{{key}}</label>
-            <input type="text" :value="value" @input="changeResumeField(`${item.field}.${i}.${key}`,$event.target.value)">
-          </div>
-        </div>
-      </div>
-      <div v-else class="resumeField" v-for="(value,key) in resume[item.field]">
-       <label>{{key}}</label>
-       <input type="text" :value="value" @input="changeResumeField(`${item.field}.${key}`, $event.target.value)">
-      </div>
-     </li>
-   </ol>
+
  </div>
 
 </template>
 
 <script>
+
 export default {
-    name: 'resumeEditor',
-    computed: {
-      selected: {
-        get() {
-          return this.$store.state.selected
-        },
-        set(value) {
-          return this.$store.commit('switchTab',value)
-        }
-      },
-      resume () {
-        return this.$store.state.resume
-      }
-    },
-    methods:{
-      changeResumeField(path,value){
-        this.$store.commit('updateResume',{
-          path,
-          value
-        })
-      }
-    }
+    name: 'resumeEditor'
 }
+
 </script>
 
 
-<style lang="scss" scoped>
+<style>
   #resumeEditor {
-      // height: 100vh;
+      height: 80vh;
       background: #fff;
-      box-shadow:0 1px 3px 0 rgba(0,0,0,0.25);
-      display: flex;
-      overflow: auto;
-      .editorNav {
-        width: 80px;
-        background: #2d414e;
-        color: #fff;
-        li {
-          display: flex;
-          height: 40px;
-          justify-content: center;
-          align-items: center;
-          margin-top: 16px;
-          margin-bottom: 16px;
-          &:hover {
-            background: #fff;
-            color: #000;
-          }
-        }
-      }
-      > .panels {
-         flex-grow: 1;
-         > li {
-           padding: 20px;
-         }
-      }
-      svg.icon{
-        width: 24px;
-        height: 24px;
-      }
-      ol {
-        list-style: none;
-      }
-      .resumeField {
-        > label {
-          display: block;
-        }
-        input[type=text] {
-          border: 1px solid #ddd;
-          width: 100%;
-          height:40px;
-          padding:0 8px;
-          margin: 16px 0;
-        }
-      }
-      hr {
-        border: none;
-        border-top: 1px solid #ddd;
-        margin: 24px 0;
-      }
   }
 </style>
